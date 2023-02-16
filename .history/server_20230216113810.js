@@ -9,7 +9,9 @@ var request = require('request');
 var LocalStorage = require('node-localstorage').LocalStorage;
 localStorage = new LocalStorage('./scratch');
 const { Artist, Track} = require('./models/spotify_db');
+const { Op } = require("sequelize");
 const axios = require('axios');
+const { type } = require('os');
 
 
 const app = new Koa();
