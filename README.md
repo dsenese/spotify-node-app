@@ -6,13 +6,27 @@ This app authenticates with the spotify api to request tracks and artists to be 
 
 NodeJS, Koa, and Sequelize with a mysql db.
 
-### `npm start`
+## Requirements
 
+Must have a local mysql connection running and a .env file with the following perameters -
 
+By creating a Spotify Developer account you can create a project that allows you access to the Spotify client id and secret key.
 
-### `npm test`
+CLIENT_ID=$SPOTIFY_API_CLIENT_ID
+CLIENT_SECRET=$SPOTIFY_API_SECRET_KEY
+REDIRECT_URI='http://localhost:3001/callback'
+SCOPES='user-read-private user-read-email'
+DB_NAME=$DB_NAME
+DB_USER=$DB_USER
+DB_PASSWORD=$DB_PASSWORD
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### `npm run server`
+
+This starts the app where it will listen for the login route to be called -
+
+http://localhost:3001/login
+
+This route will redirect you through the Spotify portal to login with a Spotify account. After logging in the Spotify will redirect you with a callback containing the access token where you can then make requests.
+
 
 
