@@ -2,7 +2,7 @@
 
 This app authenticates with the spotify api to request tracks and artists to be saved to a db that then can be referenced through the local api.
 
-## Tools used
+## Tools Used
 
 NodeJS, Koa, and Sequelize with a mysql db.
 
@@ -27,6 +27,10 @@ This starts the app where it will listen for the login route to be called -
 http://localhost:3001/login
 
 This route will redirect you through the Spotify portal to login with a Spotify account. After logging in the Spotify will redirect you with a callback containing the access token where you can then make requests.
+
+## API Example Routes with Postman
+
+https://www.postman.com/dsenese8/workspace/spotify-api/collection/8494143-1b599813-db60-409d-8aff-6ecd174228c9?action=share&creator=8494143
 
 ## Securing API endpoints
 
