@@ -12,13 +12,13 @@ Must have a local mysql connection running and a .env file with the following pe
 
 By creating a Spotify Developer account you can create a project that allows you access to the Spotify client id and secret key.
 
-CLIENT_ID=$SPOTIFY_API_CLIENT_ID
+### `CLIENT_ID=$SPOTIFY_API_CLIENT_ID
 CLIENT_SECRET=$SPOTIFY_API_SECRET_KEY
 REDIRECT_URI='http://localhost:3001/callback'
 SCOPES='user-read-private user-read-email'
 DB_NAME=$DB_NAME
 DB_USER=$DB_USER
-DB_PASSWORD=$DB_PASSWORD
+DB_PASSWORD=$DB_PASSWORD`
 
 ### `npm run server`
 
