@@ -28,5 +28,7 @@ http://localhost:3001/login
 
 This route will redirect you through the Spotify portal to login with a Spotify account. After logging in the Spotify will redirect you with a callback containing the access token where you can then make requests.
 
+## Securing API endpoints
 
+Authenticating the user with OAuth2 and rate limiting the amount of calls that user can make. Encrypting data being sent with TLS and using a reverse proxy on the server. Validating input and error handling to catch malicious input being sent or irregular behaviour with with API.
 
