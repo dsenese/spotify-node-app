@@ -1,0 +1,199 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: "Spotify API"
+  description: "API for accessing and managing Spotify tracks"
+
+basePath: "/"
+schemes:
+  - "http"
+  - "https"
+
+paths:
+  /:
+    get:
+      tags:
+        - "Authentication"
+      description: "Get access and refresh tokens for Spotify API"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "access_token"
+          in: "query"
+          description: "Access token for Spotify API"
+          required: false
+          type: "string"
+        - name: "refresh_token"
+          in: "query"
+          description: "Refresh token for Spotify API"
+          required: false
+          type: "string"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "object"
+            properties:
+              client:
+                type: "string"
+              LOGIN_URL:
+                type: "string"
+              access_token:
+                type: "string"
+              refresh_token:
+                type: "string"
+        400:
+          description: "Bad request"
+        500:
+          description: "Internal server error"
+
+  /login:
+    get:
+      tags:
+        - "Authentication"
+      description: "Redirects to Spotify login page for authentication"
+      produces:
+        - "application/json"
+      responses:
+        302:
+          description: "Redirect to Spotify login page"
+        500:
+          description: "Internal server error"
+
+  /callback:
+    get:
+      tags:
+        - "Authentication"
+      description: "Callback endpoint for handling access and refresh tokens"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "code"
+          in: "query"
+          description: "Authorization code returned by Spotify"
+          required: true
+          type: "string"
+        - name: "state"
+          in: "query"
+          description: "State value to check for CSRF"
+          required: true
+          type: "string"
+      responses:
+        302:
+          description: "Redirect to main page with access and refresh tokens"
+        400:
+          description: "Bad request"
+        500:
+          description: "Internal server error"
+
+  /ready:
+    get:
+      tags:
+        - "Authentication"
+      description: "Returns access and refresh tokens if available"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "object"
+            properties:
+              client:
+                type: "string"
+              access_token:
+                type: "string"
+              refresh_token:
+                type: "string"
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal server error"
+
+  /refresh_token:
+    get:
+      tags:
+        - "Authentication"
+      description: "Requests a new access token using a refresh token"
+      produces:
+        - "application/json"
+      responses:
+        200:
+          description: "Successful response"
+          schema:
+            type: "object"
+            properties:
+              status:
+                type: "string"
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal server error"
+
+  /isrc/{id}:
+    get:
+      tags:
+        - "Tracks"
+      description: "Searches for a track on Spotify by its ISRC code"
+      produces:
+        - "application/json"
+      parameters:
+        - name: "id"
+          in: "path"
+          description: "IS
+    /getTrack/{isrc}:
+      get:
+        summary: Retrieve a track by its ISRC.
+        parameters:
+          - name: isrc
+            in: path
+            description: The ISRC of the track to retrieve.
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: A track object.
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/Track'
+          '404':
+            description: The requested track was not found.
+
+    /getTracksByArtist:
+      get:
+        summary: Retrieve all tracks by a specific artist.
+        parameters:
+          - name: artist
+            in: query
+            description: The name of the artist to search for.
+            required: true
+            schema:
+              type: string
+        responses:
+          '200':
+            description: A list of tracks by the specified artist.
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Track'
+          '404':
+            description: No tracks were found for the specified artist.
+
+    /getAllTracks:
+      get:
+        summary: Retrieve all tracks in the database.
+        responses:
+          '200':
+            description: A list of all tracks in the database.
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/Track'
+          '404':
+            description: No tracks were found in the database.

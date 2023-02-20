@@ -1,0 +1,9 @@
+swagger: "2.0"
+info:
+  title: "Spotify API"
+  description: >
+    Spotify API for saving and retrieving tracks from .
+  version: "1.0.0"
+host: "localhost:3000"
+schemes:
+  - "http"

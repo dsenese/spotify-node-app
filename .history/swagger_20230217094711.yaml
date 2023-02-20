@@ -1,0 +1,9 @@
+swagger: "2.0"
+info:
+  title: "Spotify API"
+  description: >
+    Spotify API for addi.
+  version: "1.0.0"
+host: "localhost:3000"
+schemes:
+  - "http"
