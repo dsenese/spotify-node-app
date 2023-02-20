@@ -32,6 +32,10 @@ This route will redirect you through the Spotify portal to login with a Spotify 
 
 https://www.postman.com/dsenese8/workspace/spotify-api/collection/8494143-1b599813-db60-409d-8aff-6ecd174228c9?action=share&creator=8494143
 
+## Routes visualized in Swagger
+
+http://localhost:3001/swagger
+
 ## Securing API endpoints
 
 Authenticating the user with OAuth2 and rate limiting the amount of calls that user can make. Encrypting data being sent with TLS and using a reverse proxy on the server. Validating input and error handling to catch malicious input being sent or irregular behaviour with with API.
